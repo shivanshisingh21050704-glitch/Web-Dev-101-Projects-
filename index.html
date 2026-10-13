@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shivanshi Singh — a technology student, painter, reader, and curious mind exploring software, AI, and cybersecurity.">
+  <title>Shivanshi Singh — A Work in Progress</title>
+  <style>
+    :root {
+      --bg: #f8f5f0;
+      --paper: #fffdf9;
+      --ink: #282a36;
+      --muted: #73717a;
+      --blue: #4657a8;
+      --blue-soft: #e8eafa;
+      --rose: #ead1d3;
+      --green: #dce7dc;
+      --line: #e9e2db;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--sans); line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1080px, 90%); margin: auto; }
+    .topbar { border-bottom: 1px solid var(--line); background: rgba(248,245,240,.94); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 72px; }
+    .brand { font-family: var(--serif); font-weight: bold; font-size: 1.25rem; letter-spacing: -.04em; }
+    .brand span { color: var(--blue); }
+    .navlinks { display: flex; gap: 23px; font-size: .87rem; color: var(--muted); }
+    .navlinks a:hover { color: var(--blue); }
+
+    .hero { padding: 84px 0 78px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .small-label { color: var(--blue); text-transform: uppercase; font-size: .72rem; letter-spacing: .18em; font-weight: 800; }
+    h1 { font-family: var(--serif); font-size: clamp(3.2rem, 7vw, 6.2rem); font-weight: 500; line-height: .98; letter-spacing: -.065em; margin: 20px 0 24px; }
+    h1 em { color: var(--blue); font-weight: 400; }
+    .hero-copy { color: var(--muted); max-width: 560px; font-size: 1.05rem; }
+    .hero-copy strong { color: var(--ink); font-weight: 650; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .btn { display: inline-block; padding: 11px 18px; border-radius: 4px; font-size: .9rem; font-weight: 700; transition: transform .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: white; background: var(--blue); border: 1px solid var(--blue); }
+    .btn-light { border: 1px solid #d7d0ca; background: var(--paper); }
+    .hero-visual { position: relative; min-height: 390px; background: var(--blue-soft); border-radius: 48% 48% 8px 8px; display: grid; place-items: center; overflow: hidden; }
+    .hero-visual::before { content: ""; position: absolute; width: 290px; height: 290px; border-radius: 50%; border: 1px solid rgba(70,87,168,.28); }
+    .hero-visual::after { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(70,87,168,.25); }
+    .initials { position: relative; z-index: 1; font-family: var(--serif); font-size: 7rem; letter-spacing: -.12em; color: var(--blue); padding-right: 15px; }
+    .orbit { position: absolute; z-index: 2; font-size: .78rem; background: var(--paper); padding: 7px 12px; box-shadow: 0 8px 24px #29366a12; }
+    .orbit-a { top: 48px; left: 15px; transform: rotate(-5deg); }
+    .orbit-b { right: 10px; bottom: 95px; transform: rotate(4deg); }
+    .orbit-c { bottom: 28px; left: 40px; background: var(--green); }
+
+    section { padding: 68px 0; }
+    .section-title { font-family: var(--serif); font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.1; letter-spacing: -.045em; font-weight: 500; margin: 10px 0 18px; }
+    .lead { color: var(--muted); max-width: 700px; margin: 0; }
+    .about-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 52px; align-items: start; }
+    .side-note { padding: 24px; border-top: 2px solid var(--blue); background: var(--paper); }
+    .side-note .quote { font-family: var(--serif); font-size: 1.35rem; line-height: 1.5; }
+    .side-note small { color: var(--muted); }
+    .prose p { margin: 0 0 17px; color: #5f606a; }
+    .prose p strong { color: var(--ink); }
+    .soft-section { background: #f0ede7; }
+    .interests { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 32px; }
+    .interest { background: var(--paper); padding: 24px 22px; border: 1px solid var(--line); min-height: 215px; }
+    .interest .symbol { font-size: 1.45rem; color: var(--blue); margin-bottom: 15px; display: inline-block; }
+    .interest h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; margin: 0 0 7px; }
+    .interest p { color: var(--muted); font-size: .91rem; margin: 0; line-height: 1.7; }
+    .now-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 30px; }
+    .now-card { border: 1px solid var(--line); background: var(--paper); padding: 25px; }
+    .now-card h3 { margin: 0 0 12px; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; }
+    .now-card ul { margin: 0; padding-left: 19px; color: var(--muted); }
+    .now-card li { padding: 3px 0; }
+    .reading { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: stretch; }
+    .art-block { min-height: 280px; padding: 30px; background: var(--rose); display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+    .art-block::before { content: ""; position: absolute; width: 190px; height: 260px; border: 1px solid #8c596d75; border-radius: 50% 50% 0 0; top: 28px; right: 35px; transform: rotate(25deg); }
+    .art-block::after { content: ""; position: absolute; width: 120px; height: 180px; border: 1px solid #8c596d75; border-radius: 50%; top: 65px; right: 75px; transform: rotate(-25deg); }
+    .art-block span, .art-block strong { position: relative; z-index: 1; }
+    .art-block strong { font-family: var(--serif); font-size: 2rem; line-height: 1.2; max-width: 230px; font-weight: 500; }
+    .art-block span { font-size: .75rem; text-transform: uppercase; letter-spacing: .15em; }
+    .reading-copy { display: flex; flex-direction: column; justify-content: center; }
+    .reading-copy p { color: var(--muted); }
+    .book-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .book-list span { background: var(--blue-soft); color: #384783; padding: 5px 10px; font-size: .82rem; }
+    .timeline { margin-top: 30px; border-left: 1px solid #c8c9da; padding-left: 27px; display: grid; gap: 24px; }
+    .milestone { position: relative; }
+    .milestone::before { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); left: -32px; top: 9px; }
+    .milestone h3 { margin: 0; font-size: 1rem; }
+    .milestone p { color: var(--muted); margin: 4px 0 0; }
+    .contact-panel { background: var(--blue); color: white; padding: 42px; display: flex; justify-content: space-between; gap: 28px; align-items: center; }
+    .contact-panel .section-title { margin-bottom: 10px; }
+    .contact-panel p { color: #e1e5ff; margin: 0; }
+    .contact-panel .btn { background: var(--paper); color: var(--blue); white-space: nowrap; }
+    footer { padding: 26px 0 34px; font-size: .82rem; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    @media(max-width: 780px) {
+      .hero, .about-layout, .reading { grid-template-columns: 1fr; }
+      .hero { gap: 35px; padding-top: 55px; }
+      .hero-visual { min-height: 310px; }
+      .interests { grid-template-columns: repeat(2, 1fr); }
+      .contact-panel { align-items: flex-start; flex-direction: column; padding: 30px; }
+    }
+    @media(max-width: 520px) {
+      .navlinks { gap: 12px; font-size: .78rem; }
+      .navlinks a:nth-child(3) { display: none; }
+      .interests, .now-grid { grid-template-columns: 1fr; }
+      section { padding: 50px 0; }
+      .hero-visual { min-height: 275px; }
+      .initials { font-size: 5.5rem; }
+      .section-title { font-size: 2.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap">
+      <a class="brand" href="#home">Shivanshi<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">My story</a>
+        <a href="#interests">Interests</a>
+        <a href="#now">Right now</a>
+        <a href="#contact">Say hello</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div>
+        <div class="small-label">A personal corner of the internet</div>
+        <h1>Hi, I'm<br><em>Shivanshi.</em></h1>
+        <p class="hero-copy">
+          A tech student with an artist's eye, a reader's inner world, and a long list
+          of things I want to learn. I'm finding my way through <strong>software, AI, and cybersecurity</strong> —
+          while keeping creativity close.
+        </p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#about">A little about me ↓</a>
+          <a class="btn btn-light" href="#interests">What I love</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Decorative initials illustration">
+        <span class="orbit orbit-a">curious mind ✦</span>
+        <div class="initials">SS</div>
+        <span class="orbit orbit-b">code &amp; color</span>
+        <span class="orbit orbit-c">still becoming.</span>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-layout">
+        <div>
+          <div class="small-label">01 / My story</div>
+          <h2 class="section-title">A little logic.<br>A little feeling.<br>A lot of curiosity.</h2>
+          <div class="side-note">
+            <div class="quote">“I'm not trying to have everything figured out. I'm trying to keep becoming someone I'm proud of.”</div>
+            <small>— a thought that feels like me</small>
+          </div>
+        </div>
+        <div class="prose">
+          <p>I'm Shivanshi Singh, currently beginning my next chapter as a student at <strong>Scalar School of Technology in Bengaluru</strong>. I'm excited by technology, but I don't want my world to be limited to a screen or a syllabus.</p>
+          <p>I'm working on my programming foundations, starting with <strong>Python</strong>, and building toward stronger skills in software engineering, AI, and cybersecurity. I like the idea of understanding how things work — and then making something useful out of that understanding.</p>
+          <p>There's another side of me that has always mattered: <strong>art, books, and writing things down</strong>. I studied Fine Arts and love painting; I also keep a personal journal and gravitate toward literature that makes you pause and think.</p>
+          <p>I'm ambitious, sometimes a little all-over-the-place, and still learning how to turn big goals into small, consistent steps. This portfolio is a snapshot of that process — not a finished story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="interests">
+      <div class="wrap">
+        <div class="small-label">02 / Things that make me, me</div>
+        <h2 class="section-title">Different interests.<br>One curious person.</h2>
+        <p class="lead">I like having both technical and creative things to think about. They keep each other interesting.</p>
+        <div class="interests">
+          <article class="interest">
+            <span class="symbol">⌘</span>
+            <h3>Building with code</h3>
+            <p>Learning Python, getting comfortable with Git and GitHub, and working toward projects that do more than just look good in a screenshot.</p>
+          </article>
+          <article class="interest">
+            <span class="symbol">◈</span>
+            <h3>AI &amp; cybersecurity</h3>
+            <p>I'm drawn to intelligent systems and digital security — how technology works, where it can fail, and how we can build it more responsibly.</p>
+          </article>
+          <article class="interest">
+            <span class="symbol">✳</span>
+            <h3>Painting</h3>
+            <p>Fine arts is part of my story. I love the slower process of observing, choosing colors, and trying to put a feeling onto paper.</p>
+          </article>
+          <article class="interest">
+            <span class="symbol">▤</span>
+            <h3>Books &amp; journaling</h3>
+            <p>I enjoy introspective writing and stories that stay in your head long after you finish the page. Journaling helps me make sense of my own thoughts.</p>
+          </article>
+          <article class="interest">
+            <span class="symbol">↗</span>
+            <h3>Big goals</h3>
+            <p>I'd love to contribute to open source, work on meaningful software, and grow into the kind of engineer who can solve difficult problems.</p>
+          </article>
+          <article class="interest">
+            <span class="symbol">☼</span>
+            <h3>Learning by doing</h3>
+            <p>College, collaborations, new people, and projects are all chances to experiment, make mistakes, and discover what I'm capable of.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="now">
+      <div class="wrap">
+        <div class="small-label">03 / Current chapter</div>
+        <h2 class="section-title">What I'm focusing on lately.</h2>
+        <p class="lead">My goals are big, so I'm trying to give them practical first steps.</p>
+        <div class="now-grid">
+          <div class="now-card">
+            <h3>On my learning list</h3>
+            <ul>
+              <li>Get stronger at Python and problem-solving</li>
+              <li>Use Git and GitHub for real projects</li>
+              <li>Build a foundation in cybersecurity and Linux</li>
+              <li>Explore AI beyond the buzzwords</li>
+            </ul>
+          </div>
+          <div class="now-card">
+            <h3>On my longer-term list</h3>
+            <ul>
+              <li>Build a portfolio of projects I'm proud to show</li>
+              <li>Work toward open-source contributions, including GSoC</li>
+              <li>Meet people who enjoy building and learning</li>
+              <li>Keep art and reading in my life, even when things get busy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section">
+      <div class="wrap reading">
+        <div class="art-block">
+          <span>the creative corner</span>
+          <strong>Some things are better understood through art.</strong>
+        </div>
+        <div class="reading-copy">
+          <div class="small-label">04 / Outside tech</div>
+          <h2 class="section-title">A mind that likes to wander.</h2>
+          <p>Painting gives me room to experiment; books give me new ways to see the world; journaling gives all those thoughts somewhere to land. I like the contrast between the precision of code and the open-endedness of art.</p>
+          <p>My reading interests lean toward reflective, philosophical writing — the kind that asks uncomfortable questions and makes ordinary life feel a little less ordinary.</p>
+          <div class="book-list">
+            <span>Dostoevsky</span><span>Kafka</span><span>Camus</span><span>Painting</span><span>Journaling</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="small-label">05 / The journey</div>
+        <h2 class="section-title">Not a straight line — still forward.</h2>
+        <p class="lead">A few chapters that describe where I am and where I hope to go.</p>
+        <div class="timeline">
+          <div class="milestone">
+            <h3>Art taught me to observe</h3>
+            <p>Fine Arts and painting helped me practise patience, composition, and seeing details other people might miss.</p>
+          </div>
+          <div class="milestone">
+            <h3>Curiosity pulled me toward tech</h3>
+            <p>From early web projects to programming and cybersecurity learning, I've been building the foundations step by step.</p>
+          </div>
+          <div class="milestone">
+            <h3>A new chapter in Bengaluru</h3>
+            <p>Starting college means new people, new challenges, and lots of room to find my direction through experience.</p>
+          </div>
+          <div class="milestone">
+            <h3>The next chapter is mine to build</h3>
+            <p>More projects, more practice, open-source contributions, and a future that combines technical depth with creativity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-panel">
+          <div>
+            <div class="small-label" style="color:#d7dcff">One last thing</div>
+            <h2 class="section-title">Let's build something<br>worth learning from.</h2>
+            <p>Open to connecting with curious people, fellow learners, and future collaborators.</p>
+          </div>
+          <!-- Replace this placeholder with your real email address. -->
+          <a class="btn" href="mailto:your.email@example.com">Say hello ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Shivanshi Singh</span>
+      <span>Made with HTML &amp; CSS · A work in progress, just like me.</span>
+    </div>
+  </footer>
+</body>
+</html>
